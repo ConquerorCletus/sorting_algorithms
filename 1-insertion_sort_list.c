@@ -9,42 +9,42 @@
  */
 void swapNodes(listint_t **head, listint_t **a, listint_t *b)
 {
-	(*a)->next = b->next;
+    (*a)->next = b->next;
 
-	if ((*a)->next != NULL)
-		b->next->prev = *a;
+    if ((*a)->next != NULL)
+        b->next->prev = *a;
 
-	b->prev = (*a)->prev;
-	b->next = *a;
+    b->prev = (*a)->prev;
+    b->next = *a;
 
-	if ((*a)->prev != NULL)
-		(*a)->prev->next = b;
-	else
-		*head = b;
-	(*a)->prev = b;
-	*a = b->prev;
+    if ((*a)->prev != NULL)
+        (*a)->prev->next = b;
+    else
+        *head = b;
+    (*a)->prev = b;
+    *a = b->prev;
 }
 
 /**
- * insertion_sort_list - This sort according to the jion
- * algorithm
+ * insertion_sort_list - This sorts the list using the Insertion sort algorithm
  * @list: pointer to the head
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *i, *j, *tmp;
+    listint_t *i, *tmp;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
+    if (list == NULL || *list == NULL || (*list)->next == NULL)
+        return;
 
-	for (i = (*list)->next; i != NULL; i = tmp)
-	{
-		tmp = i->next;
-		j = i->prev;
-		while (j != NULL && i->n < j->n)
-		{
-			swapNodes(list, &j, i);
-			print_list((const listint_t *)*list);
+    for (i = (*list)->next; i != NULL; i = i->next)
+    {
+        tmp = i;
+
+        while (tmp->prev != NULL && tmp->n < tmp->prev->n)
+        {
+            swapNodes(list, &(tmp->prev), tmp);
+			print_list(*list);
 		}
 	}
 }
+
