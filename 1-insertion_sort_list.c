@@ -9,20 +9,20 @@
  */
 void swapNodes(listint_t **head, listint_t *a, listint_t *b)
 {
-    if (a->prev)
-        a->prev->next = b;
-    else
-        *head = b;
+	if (a->prev)
+		a->prev->next = b;
+	else
+		*head = b;
 
-    if (b->next)
-        b->next->prev = a;
+	if (b->next)
+		b->next->prev = a;
 
-    a->next = b->next;
-    b->prev = a->prev;
-    a->prev = b;
-    b->next = a;
+	a->next = b->next;
+	b->prev = a->prev;
+	a->prev = b;
+	b->next = a;
 
-    print_list(*head);
+	print_list(*head);
 }
 
 /**
@@ -32,20 +32,20 @@ void swapNodes(listint_t **head, listint_t *a, listint_t *b)
  */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *i, *tmp;
+	listint_t *i, *tmp;
 
-    if (list == NULL || *list == NULL || (*list)->next == NULL)
-        return;
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
 
-    i = (*list)->next;
-    while (i)
-    {
-        tmp = i;
-        i = i->next;
+	i = (*list)->next;
+	while (i)
+	{
+		tmp = i;
+		i = i->next;
 
-        while (tmp->prev && tmp->n < tmp->prev->n)
-        {
-            swapNodes(list, tmp->prev, tmp);
-        }
-    }
+		while (tmp->prev && tmp->n < tmp->prev->n)
+		{
+			swapNodes(list, tmp->prev, tmp);
+		}
+	}
 }
