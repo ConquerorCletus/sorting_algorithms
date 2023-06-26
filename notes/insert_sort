@@ -8,6 +8,15 @@ assuming the same list used for bubbleSort
 	1|2|3|4|5|6|0-------------> 4th sort
 	0|1|2|3|4|5|6-------------> sorted list
 
+Numbers = 7, 9, 5, 4, 3, 8, 2
+	7|9|5|4|3|8|2 ------>unsorted list
+	7|9|5|4|3|8|2 -------1st sort
+	5|7|9|4|3|8|2 --------2nd sort
+	4|5|7|9|3|8|2 --------3rd sort
+	3|4|5|7|9|8|2 --------4th sort
+	2|3|4|5|7|8|9 --------5th sort
+	
+
 PseudoCode for insertion sort
 procedure insertionSort(arr: array of elements)
     n = length(arr)
