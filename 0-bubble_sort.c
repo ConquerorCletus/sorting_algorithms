@@ -1,7 +1,7 @@
 #include "sort.h"
 /**
  * swap - This function swap the values of array
- * @a: 1st values
+ * @a: 1st value
  * @b: 2nd value
  * Return: void
  */
