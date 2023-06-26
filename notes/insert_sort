@@ -1,0 +1,24 @@
+----------INSERT SORT------------
+This sort divides the list into 2, the sorted and the unsorted. Starting from the left to the right, the a[0] becomes the sorted and a[1] the unsorted
+assuming the same list used for bubbleSort
+	1|4|6|5|3|2|0------------->unsorted list
+	1|4|6|5|3|2|0-------------> 1st sort
+	1|4|5|6|3|2|0-------------> 2nd sort
+	1|3|4|5|6|2|0-------------> 3rd sort
+	1|2|3|4|5|6|0-------------> 4th sort
+	0|1|2|3|4|5|6-------------> sorted list
+
+PseudoCode for insertion sort
+procedure insertionSort(arr: array of elements)
+    n = length(arr)
+    for i = 1 to n - 1
+        current = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > current
+            arr[j + 1] = arr[j]
+            j = j - 1
+        end while
+        arr[j + 1] = current
+    end for
+end procedure
+
