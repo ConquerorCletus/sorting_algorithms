@@ -36,7 +36,7 @@ void cocktail_sort_list(listint_t **list);
 void swap_behind_node(listint_t **list, listint_t **tail, listint_t **current);
 void swap_ahead_node(listint_t **list, listint_t **tail, listint_t **current);
 void counting_sort(int *array, size_t size);
-
+void merge_sort(int *array, size_t size);
 
 
 
