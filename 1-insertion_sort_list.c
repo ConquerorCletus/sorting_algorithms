@@ -1,51 +1,46 @@
 #include "sort.h"
 
 /**
- * swapNodes - This function is to swap nodes
- * @a: 1st node
- * @b: 2nd node
- * @head: pointer to the head
- * Return: void
+ * swap_list - Swap two nodes in a listint_t list.
+ * @head: A pointer to the head.
+ * @a: 1st node to swap.
+ * @b: 2nd node to swap.
  */
-void swapNodes(listint_t **head, listint_t *a, listint_t *b)
+void swap_list(listint_t **head, listint_t **a, listint_t *b)
 {
-	if (a->prev)
-		a->prev->next = b;
+	(*a)->next = b->next;
+	if (b->next != NULL)
+		b->next->prev = *a;
+	b->prev = (*a)->prev;
+	b->next = *a;
+	if ((*a)->prev != NULL)
+		(*a)->prev->next = b;
 	else
 		*head = b;
-
-	if (b->next)
-		b->next->prev = a;
-
-	a->next = b->next;
-	b->prev = a->prev;
-	a->prev = b;
-	b->next = a;
-
-	print_list(*head);
+	(*a)->prev = b;
+	*a = b->prev;
 }
 
 /**
- * insertion_sort_list - This sort according to the jion
- * algorithm
- * @list: pointer to the head
+ * insertion_sort_list - Sorts a list of integers
+ * using insertion sort algorithm.
+ * @list: head of list of integers.
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *i, *tmp;
+	listint_t *current, *insertion, *tmp;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (!list || !*list || !(*list)->next)
 		return;
 
-	i = (*list)->next;
-	while (i)
+	for (current = (*list)->next; current != NULL; current = tmp)
 	{
-		tmp = i;
-		i = i->next;
-
-		while (tmp->prev && tmp->n < tmp->prev->n)
+		tmp = current->next;
+		insertion = current->prev;
+		while (insertion != NULL && current->n < insertion->n)
 		{
-			swapNodes(list, tmp->prev, tmp);
+			swap_list(list, &insertion, current);
+			print_list((const listint_t *)*list);
 		}
 	}
 }
