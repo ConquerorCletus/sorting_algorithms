@@ -1,0 +1,17 @@
+1.we have 7 element= n(length of array)
+
+2.loop through the element for i to n(length of array)
+	from i(index of first) to (n-1)  --------->before 
+3.swap
+	if a[i] => next element----->till end
+4.loop again
+	from i till (n-1)-N till it is arranged
+
+5.if no swap
+	return sorted array
+
+swap(a,b)
+int c(tmp)
+a = c;
+c = b;
+b = a;
